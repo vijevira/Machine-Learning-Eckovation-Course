@@ -1,0 +1,50 @@
+#Assignment4
+
+#importing math class for calculating square root
+import math
+
+#creation of Triangle class
+class Triangle:
+    #constructor of the class taking 3 argument as sides of triangle
+    def __init__(self,a,b,c):
+        
+        self.a=a
+        self.b=b
+        self.c=c
+
+    #function for returning perimeter of triangle
+    def perimeter(self):
+        
+        return (self.a+self.b+self.c)
+
+    #function for returning area of triangle
+    def area(self):
+        s=(self.perimeter())/2
+        return math.sqrt(s*(s-self.a)*(s-self.b)*(s-self.c))
+
+#checking sides of triangle is valid or not
+def isValid(a,b,c):
+    if a<=0 or b<=0 or c<=0:
+        print("sides of triangle is not valid! Please Check")
+        print("Error: sides of triangle cannot be negative or zero")
+        return False
+
+    #sum of any two sides must be greater than third one
+    if (a+b)<=c or (b+c)<=a or (a+c)<=b:
+        print("sides of triangle is not valid! Please Check")
+        print("Error: sum of any two sides of triangle must be greater than third one")
+        return False
+    return True
+
+#now program
+
+#taking input from user
+a,b,c=map(int,input("enter three sides of triangle seperate by space: ").split())
+
+#checking sides is valid or not
+if isValid(a,b,c):
+    #creating object of Triangle class
+    trg=Triangle(a,b,c)
+    print("Perimeter =",trg.perimeter(),"unit")
+    print("Area =",trg.area(),"sq unit")
+    
